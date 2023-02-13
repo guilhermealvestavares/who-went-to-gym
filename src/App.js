@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { collection, getDocs, updateDoc, doc } from "firebase/firestore"; 
 import { db } from './firebaseUtils'
+import { isSameDate } from './utils/isSameDate';
 
 function App() {
 
@@ -10,11 +11,14 @@ function App() {
   const [selectPerson, setSelectPerson] = useState("")
 
   const handleClickRegister = async () => {
-    console.log("teste")
-    await updateDoc(doc(db, "person", selectPerson), {
-      lastTime: new Date(),
-      times: persons.find(element => element.id === selectPerson).times+1
-    })
+    if(isSameDate(new Date(persons.find(element => element.id === selectPerson).lastTime.seconds*1000), new Date())) {
+      alert(`${persons.find(element => element.id === selectPerson).name} já registrou um treino hoje`)
+    } else {
+      await updateDoc(doc(db, "person", selectPerson), {
+        lastTime: new Date(),
+        times: persons.find(element => element.id === selectPerson).times+1
+      })
+    }
   }
 
   const handleSelectUser = (id) => {
@@ -30,7 +34,6 @@ function App() {
   },[]);
 
   useEffect(() => {
-    console.log(documentInfos)
     documentInfos?.forEach((doc) => {
       console.log(doc.data());
      setPersons(persons => [...persons, doc.data()] )
