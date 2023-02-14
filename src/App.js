@@ -1,4 +1,5 @@
 import { Register } from "./components/Register";
+import { Ranking } from "./components/Ranking";
 import { Wrapper, Title, Description } from "./App.style";
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         </Description>
       </div>
       <Register />
+      <Ranking />
     </Wrapper>
   );
 }

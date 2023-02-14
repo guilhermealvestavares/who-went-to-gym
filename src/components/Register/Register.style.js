@@ -1,17 +1,16 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  margin: 0 auto;
+  margin: 24px auto;
   padding: 24px;
   border-radius: 8px;
-  width: 230px;
+  width: 100%;
+  max-width: 280px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   background-color: #ffffff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  min-height: 140px;
 `;
 
 export const Title = styled.h2`
@@ -25,7 +24,7 @@ export const Select = styled.select`
   width: 100%;
   border-radius: 4px;
   border: 2px solid #5f27cd;
-  height: 24px;
+  height: 30px;
 `;
 
 export const Button = styled.input`
