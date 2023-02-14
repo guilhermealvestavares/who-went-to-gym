@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseUtils";
 import { isSameDate } from "../../utils/isSameDate";
+import { Wrapper, Select, Button, Title } from "./Register.style";
 
 export const Register = () => {
   const [documentInfos, setDocumentInfos] = useState([]);
@@ -60,25 +61,26 @@ export const Register = () => {
   }, [documentInfos]);
 
   return (
-    <div className="App">
+    <Wrapper>
+      <Title>Registre seu treino aqui</Title>
       {persons && (
-        <select
+        <Select
           name="persons"
           onChange={(event) => handleSelectUser(event.target.value)}
         >
-          <option value=""></option>
+          <option value="">Selecione uma pessoa</option>
           {persons?.map(({ name, id }, index) => (
             <option key={name + index} value={id}>
               {name}
             </option>
           ))}
-        </select>
+        </Select>
       )}
-      <input
+      <Button
         type="button"
         onClick={handleClickRegister}
         value="Registrar treino"
       />
-    </div>
+    </Wrapper>
   );
 };
