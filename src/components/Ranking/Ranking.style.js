@@ -32,6 +32,8 @@ export const SubTitle = styled.span`
 export const List = styled.ul`
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ListItem = styled.li`
@@ -41,6 +43,8 @@ export const ListItem = styled.li`
   padding: 12px;
   font-weight: bold;
   margin-bottom: 4px;
+  justify-content: center;
+  align-items: center;
 
   &:nth-child(2n + 3) {
     color: #ffffff;

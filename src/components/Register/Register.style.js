@@ -36,4 +36,5 @@ export const Button = styled.input`
   border: none;
   font-weight: bold;
   border-radius: 6px;
+  cursor: pointer;
 `;
