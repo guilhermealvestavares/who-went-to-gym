@@ -61,26 +61,28 @@ export const Register = () => {
   }, [documentInfos]);
 
   return (
-    <Wrapper>
+    <>
       <Title>Registre seu treino aqui</Title>
-      {persons && (
-        <Select
-          name="persons"
-          onChange={(event) => handleSelectUser(event.target.value)}
-        >
-          <option value="">Selecione uma pessoa</option>
-          {persons?.map(({ name, id }, index) => (
-            <option key={name + index} value={id}>
-              {name}
-            </option>
-          ))}
-        </Select>
-      )}
-      <Button
-        type="button"
-        onClick={handleClickRegister}
-        value="Registrar treino"
-      />
-    </Wrapper>
+      <Wrapper>
+        {persons && (
+          <Select
+            name="persons"
+            onChange={(event) => handleSelectUser(event.target.value)}
+          >
+            <option value="">Registre seu treino aqui</option>
+            {persons?.map(({ name, id }, index) => (
+              <option key={name + index} value={id}>
+                {name}
+              </option>
+            ))}
+          </Select>
+        )}
+        <Button
+          type="button"
+          onClick={handleClickRegister}
+          value="Registrar treino"
+        />
+      </Wrapper>
+    </>
   );
 };
