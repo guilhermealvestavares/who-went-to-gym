@@ -8,7 +8,7 @@ export const Title = styled.h2`
 `;
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 90%;
   max-width: 405px;
   margin-bottom: 24px;
 `;
@@ -46,4 +46,8 @@ export const ListItem = styled.li`
 
 export const NameList = styled.span`
   width: 70px;
+`;
+
+export const SpanAdjusted = styled.span`
+  margin-bottom: 4px;
 `;

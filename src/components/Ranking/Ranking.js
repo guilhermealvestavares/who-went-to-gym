@@ -8,6 +8,7 @@ import {
   Title,
   SubTitle,
   NameList,
+  SpanAdjusted,
 } from "./Ranking.style";
 
 export const Ranking = () => {
@@ -31,6 +32,7 @@ export const Ranking = () => {
     documentInfos?.forEach((doc) => {
       setPersons((persons) => [...persons, doc.data()]);
     });
+    console.log(sortedPersons);
   }, [documentInfos]);
 
   useEffect(() => {
@@ -48,14 +50,15 @@ export const Ranking = () => {
               <NameList>{`${name}`}</NameList>
               <span>{`${times} vezes`}</span>
               <span>
-                {`${new Date(lastTime.seconds * 1000).toLocaleDateString()} ${
-                  index === 0
-                    ? " 👑"
-                    : index === sortedPersons.length - 1
-                    ? "🔦"
-                    : "🏃"
-                }`}
+                {`${new Date(lastTime.seconds * 1000).toLocaleDateString()} `}
               </span>
+              <SpanAdjusted>
+                {index === 0
+                  ? "👑"
+                  : index === sortedPersons.length - 1
+                  ? "🔦"
+                  : "🏃"}
+              </SpanAdjusted>
             </ListItem>
           ))}
         </List>

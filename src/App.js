@@ -7,7 +7,7 @@ function App() {
       <div>
         <Title>Foto de agora (academia) 2023</Title>
         <Description>
-          Competição entre amigos para motivar a ir à academia
+          Competição entre amigos para motivar ir à academia
         </Description>
       </div>
       <Register />
