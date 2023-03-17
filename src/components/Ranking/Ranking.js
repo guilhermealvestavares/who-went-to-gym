@@ -6,7 +6,6 @@ import {
   ListItem,
   List,
   Title,
-  SubTitle,
   NameList,
   SpanAdjusted,
 } from "./Ranking.style";

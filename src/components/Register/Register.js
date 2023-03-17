@@ -69,7 +69,7 @@ export const Register = () => {
             name="persons"
             onChange={(event) => handleSelectUser(event.target.value)}
           >
-            <option value="">Registre seu treino aqui</option>
+            <option value="">Selecione o participante</option>
             {persons?.map(({ name, id }, index) => (
               <option key={name + index} value={id}>
                 {name}
