@@ -1,18 +1,13 @@
-import { Register } from "./components/Register";
-import { Ranking } from "./components/Ranking";
-import { Wrapper, Title, Description } from "./App.style";
+import { Routes } from "./Routes";
+import { useState } from "react";
+import { Header } from "./components/Header";
+import { UserProvider } from "./contexts/UserContext";
 function App() {
   return (
-    <Wrapper>
-      <div>
-        <Title>Foto de agora (academia) 2023</Title>
-        <Description>
-          Competição entre amigos para motivar ir à academia
-        </Description>
-      </div>
-      <Register />
-      <Ranking />
-    </Wrapper>
+    <UserProvider>
+      <Header />
+      <Routes />
+    </UserProvider>
   );
 }
 
