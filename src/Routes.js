@@ -9,7 +9,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
 
 export const Routes = () => {
-  const { isLogged, setIsLogged } = useContext(UserContext);
+  const { isLogged } = useContext(UserContext);
 
   return (
     <BrowserRouter>

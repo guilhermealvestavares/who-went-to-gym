@@ -31,7 +31,6 @@ export const Ranking = () => {
     documentInfos?.forEach((doc) => {
       setPersons((persons) => [...persons, doc.data()]);
     });
-    console.log(sortedPersons);
   }, [documentInfos]);
 
   useEffect(() => {

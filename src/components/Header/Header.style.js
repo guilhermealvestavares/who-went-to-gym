@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
 export const WrapperItem = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -32,4 +32,9 @@ export const LogoutButton = styled.button`
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
+`;
+
+export const ApplicationName = styled.p`
+  font-weight: bold;
+  margin: 0;
 `;

@@ -1,5 +1,4 @@
-import { Register } from "../components/Register";
-import { Ranking } from "../components/Ranking";
+import { Register, Ranking } from "../components";
 import { Wrapper, Title, Description } from "../App.style";
 
 export const Home = () => {
