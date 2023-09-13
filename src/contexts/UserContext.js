@@ -6,7 +6,9 @@ export const UserProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(
     localStorage?.getItem("isLogged") || false
   );
-  const [userInfos, setUserInfos] = useState();
+  const [userInfos, setUserInfos] = useState(
+    JSON.parse(localStorage?.getItem("userInfos")) || null
+  );
 
   return (
     <UserContext.Provider

@@ -25,10 +25,10 @@ export const Header = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        localStorage.setItem("userInfos", result?.user);
+        localStorage.setItem("userInfos", JSON.stringify(result?.user));
         localStorage.setItem("isLogged", true);
         setIsLogged(true);
-        setUserInfos(result?.user);
+        setUserInfos(JSON.stringify(result?.user));
       })
       .catch((error) => console.log(error));
   };
