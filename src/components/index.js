@@ -3,3 +3,4 @@ export * from "./Register";
 export * from "./Header";
 export * from "./Login";
 export * from "./Footer";
+export * from "./NewRanking";
