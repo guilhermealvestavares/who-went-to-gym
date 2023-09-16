@@ -21,13 +21,11 @@ import { useNavigate } from "react-router-dom";
 export const NewRanking = () => {
   const navigate = useNavigate();
 
-  const { isLogged, setIsLogged, userInfos, setUserInfos } =
-    useContext(UserContext);
+  const { userInfos } = useContext(UserContext);
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
