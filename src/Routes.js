@@ -16,7 +16,8 @@ export const Routes = () => {
   return (
     <BrowserRouter>
       <BrowserRoutes>
-        <Route path="/" element={isLogged ? <Home /> : <Login />}></Route>
+        <Route path="new-ranking" element={<Home />} />
+        <Route path="/" />
         <Route path="/login" element={!isLogged ? <Login /> : <Home />}></Route>
         <Route
           path="/new"
