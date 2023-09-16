@@ -6,7 +6,8 @@ import {
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { NewRanking } from "./pages/NewRanking";
-import { useState, useContext } from "react";
+import { RankingInfos } from "./components";
+import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
 
 export const Routes = () => {
@@ -21,6 +22,7 @@ export const Routes = () => {
           path="/new"
           element={!isLogged ? <Login /> : <NewRanking />}
         ></Route>
+        <Route path="/rankings/:id" element={<RankingInfos />} />
       </BrowserRoutes>
     </BrowserRouter>
   );

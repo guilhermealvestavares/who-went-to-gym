@@ -16,8 +16,11 @@ import { db } from "../../firebaseUtils";
 import { v4 as uuidv4 } from "uuid";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const NewRanking = () => {
+  const navigate = useNavigate();
+
   const { isLogged, setIsLogged, userInfos, setUserInfos } =
     useContext(UserContext);
 
@@ -36,7 +39,9 @@ export const NewRanking = () => {
   const onSubmit = async (data) => {
     const { name, sports, finalDate } = data;
     const { displayName, email } = userInfos;
-    await setDoc(doc(db, "rankings", uuidv4()), {
+    const DOC_HASH = uuidv4();
+
+    await setDoc(doc(db, "rankings", DOC_HASH), {
       name,
       sports,
       finalDate: normalizeDate(finalDate),
@@ -46,6 +51,8 @@ export const NewRanking = () => {
       },
       participants: [email],
     });
+
+    navigate(`/rankings/${DOC_HASH}`);
   };
 
   return (
@@ -53,7 +60,6 @@ export const NewRanking = () => {
       <WrapperFields>
         <Question>Nome da competição</Question>
         <TextField
-          id="standard-basic"
           label="Nome da competição"
           variant="standard"
           {...register("name", { required: true })}
