@@ -15,7 +15,7 @@ export const Routes = () => {
 
   return (
     <BrowserRouter>
-      <BrowserRoutes>
+      <BrowserRoutes basename={process.env.PUBLIC_URL}>
         <Route path="old-ranking" element={<Home />} />
         <Route path="/" />
         <Route path="/login" element={!isLogged ? <Login /> : <Home />}></Route>
