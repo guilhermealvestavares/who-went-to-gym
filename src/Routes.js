@@ -14,17 +14,15 @@ export const Routes = () => {
   const { isLogged } = useContext(UserContext);
 
   return (
-    <BrowserRouter>
-      <BrowserRoutes basename={process.env.PUBLIC_URL}>
-        <Route path="old-ranking" element={<Home />} />
-        <Route path="/" />
-        <Route path="/login" element={!isLogged ? <Login /> : <Home />}></Route>
-        <Route
-          path="/new"
-          element={!isLogged ? <Login /> : <NewRanking />}
-        ></Route>
-        <Route path="/rankings/:id" element={<RankingInfos />} />
-      </BrowserRoutes>
-    </BrowserRouter>
+    <BrowserRoutes basename={process.env.PUBLIC_URL}>
+      <Route path="old-ranking" element={<Home />} />
+      <Route path="/" />
+      <Route path="/login" element={!isLogged ? <Login /> : <Home />}></Route>
+      <Route
+        path="/new"
+        element={!isLogged ? <Login /> : <NewRanking />}
+      ></Route>
+      <Route path="/rankings/:id" element={<RankingInfos />} />
+    </BrowserRoutes>
   );
 };
