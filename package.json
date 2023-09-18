@@ -1,7 +1,7 @@
 {
   "name": "who-went-to-gym",
   "version": "0.1.0",
-  "homepage": "https://guilhermealvestavares.github.io/who-went-to-gym",
+  "homepage": "https://guilhermealvestavares.github.io/who-went-to-gym/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
