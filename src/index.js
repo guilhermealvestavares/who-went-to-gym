@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/">
     <script
       src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"
       crossorigin

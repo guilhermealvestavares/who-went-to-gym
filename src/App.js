@@ -4,7 +4,7 @@ import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (
-    <UserProvider basename={process.env.PUBLIC_URL}>
+    <UserProvider>
       <Header />
       <Routes />
       <Footer />
