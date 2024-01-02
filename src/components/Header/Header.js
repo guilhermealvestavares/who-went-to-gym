@@ -1,13 +1,14 @@
+import { useContext } from "react";
 import {
   Wrapper,
   ApplicationName,
   WrapperItem,
   LogoutButton,
+  Avatar,
 } from "./Header.style";
 import Container from "react-bootstrap/Container";
 import { auth } from "../../firebaseUtils";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import GoogleButton from "react-google-button";
 import { doc, setDoc } from "firebase/firestore";
@@ -56,7 +57,7 @@ export const Header = () => {
         <WrapperItem>
           {isLogged ? (
             <>
-              <img alt="Foto do perfil" src={userInfos?.photoURL} />
+              <Avatar alt="Foto do perfil" src={userInfos?.photoURL} />
               <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
             </>
           ) : (

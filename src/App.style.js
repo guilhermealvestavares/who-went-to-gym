@@ -14,10 +14,19 @@ export const Title = styled.h1`
   text-align: center;
   margin: 0;
   padding: 0;
+  color: #ffffff;
 `;
 
 export const Description = styled.p`
   font-size: 14px;
   text-align: center;
   margin: 12px 0 24px 0;
+  color: #ffffff;
+`;
+
+export const WrapperCards = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 `;

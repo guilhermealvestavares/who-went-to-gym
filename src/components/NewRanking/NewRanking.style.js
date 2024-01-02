@@ -9,6 +9,7 @@ export const Form = styled.form`
   flex-direction: column;
   padding: 24px;
   margin: 24px 0;
+  color: #ffffff;
 `;
 
 export const WrapperFields = styled.div`

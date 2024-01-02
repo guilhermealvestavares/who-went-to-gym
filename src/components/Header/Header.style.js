@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   padding: 12px 0;
-  border-bottom: 2px solid rgba(149, 165, 166, 0.5);
+  border-bottom: 2px solid #ffffff;
 `;
 
 export const WrapperItem = styled.div`
@@ -37,4 +37,8 @@ export const LogoutButton = styled.button`
 export const ApplicationName = styled.p`
   font-weight: bold;
   margin: 0;
+`;
+
+export const Avatar = styled.img`
+  border-radius: 50%;
 `;

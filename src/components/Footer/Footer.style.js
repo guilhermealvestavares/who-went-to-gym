@@ -5,4 +5,6 @@ export const Wrapper = styled.div`
   padding: 12px;
   border-top: 1px solid rgba(149, 165, 166, 0.2);
   text-align: center;
+  color: #ffffff;
+  margin-top: 100px;
 `;

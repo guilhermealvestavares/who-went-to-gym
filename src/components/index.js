@@ -5,3 +5,4 @@ export * from "./Login";
 export * from "./Footer";
 export * from "./NewRanking";
 export * from "./RankingInfos";
+export * from "./CardInfos";

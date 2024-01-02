@@ -40,6 +40,7 @@ export const NewRanking = () => {
     const DOC_HASH = uuidv4();
 
     await setDoc(doc(db, "rankings", DOC_HASH), {
+      id: DOC_HASH,
       name,
       sports,
       finalDate: normalizeDate(finalDate),
