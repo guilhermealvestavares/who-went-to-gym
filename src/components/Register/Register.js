@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseUtils";
-import { isSameDate } from "../../utils/isSameDate";
 import {
   Wrapper,
   Select,

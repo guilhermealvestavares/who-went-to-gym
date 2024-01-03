@@ -6,7 +6,6 @@ import {
   LogoutButton,
   MenuWrapper,
   MenuItem,
-  StripMyWorkouts,
 } from "./Header.style";
 import Container from "react-bootstrap/Container";
 import { auth } from "../../firebaseUtils";
