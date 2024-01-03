@@ -11,10 +11,19 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 14px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: rgb(35, 35, 79);
+  font-size: 32px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+`;
+
+export const Description = styled.p``;
+
+export const SucessImage = styled.img`
+  margin: 0 auto;
+  padding: 16px 0;
+  width: 120px;
 `;
 
 export const Select = styled.select`

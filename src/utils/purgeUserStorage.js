@@ -6,5 +6,4 @@ export const PurgeUserStorage = () => {
 
   localStorage.clear();
   setIsLogged(false);
-  console.log("purge");
 };

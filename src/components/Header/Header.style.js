@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 12px 0;
   border-bottom: 2px solid #ffffff;
-  margin-bottom: 32px;
 `;
 
 export const WrapperItem = styled.div`
@@ -49,6 +48,15 @@ export const MenuItem = styled.li`
   font-weight: bold;
   margin: 0;
   padding-right: 24px;
+  text-decoration: none;
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  a:hover {
+    color: #bdc3c7;
+  }
 `;
 
 export const ApplicationName = styled.p`
@@ -58,4 +66,14 @@ export const ApplicationName = styled.p`
 
 export const Avatar = styled.img`
   border-radius: 50%;
+`;
+
+export const StripMyWorkouts = styled.div`
+  width: 100%;
+  padding: 12px 0;
+  margin-bottom: 32px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  background-color: #16a085;
 `;

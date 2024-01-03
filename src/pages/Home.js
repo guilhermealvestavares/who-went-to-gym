@@ -1,14 +1,25 @@
 import { CardInfos } from "../components";
-import { Wrapper, Title, Description, WrapperCards } from "../App.style";
+import {
+  Wrapper,
+  Title,
+  Description,
+  WrapperCards,
+  NonLoggedFrame,
+  StartButton,
+} from "../App.style";
 import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebaseUtils";
 import Container from "react-bootstrap/Container";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebaseUtils";
+import { doc, setDoc } from "firebase/firestore";
 
 export const Home = () => {
-  const { isLogged, userInfos } = useContext(UserContext);
+  const { isLogged, userInfos, setUserInfos, setIsLogged } =
+    useContext(UserContext);
   const [rankingInfos, setRankingInfos] = useState();
   const [rankingInfo, setRankingInfo] = useState([]);
 
@@ -25,6 +36,31 @@ export const Home = () => {
       setRankingInfo((rankingInfo) => [...rankingInfo, doc.data()]);
     });
   }, [rankingInfos]);
+
+  const handlerGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then(async (result) => {
+        localStorage.setItem("userInfos", JSON.stringify(result?.user));
+        localStorage.setItem("isLogged", true);
+        setIsLogged(true);
+        setUserInfos(JSON.stringify(result?.user));
+
+        const { email, displayName, photoURL } = userInfos;
+
+        await setDoc(
+          doc(db, "users", userInfos.email),
+          {
+            email,
+            displayName,
+            photoURL,
+          },
+          { merge: true }
+        );
+        window.location.reload();
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <Container>
@@ -43,6 +79,15 @@ export const Home = () => {
               ))}
           </WrapperCards>
         </Wrapper>
+      )}
+      {!isLogged && (
+        <NonLoggedFrame>
+          <Title>Inicie um desafio de academia em segundos </Title>
+          <Description>
+            Crie um grupo e comece a competir com os seus amigos!
+          </Description>
+          <StartButton onClick={handlerGoogleLogin}>Começar</StartButton>
+        </NonLoggedFrame>
       )}
     </Container>
   );

@@ -53,3 +53,24 @@ export const Badge = styled.div`
   margin-right: 6px;
   margin-bottom: 6px;
 `;
+
+export const List = styled.ul`
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ListItem = styled.li`
+  display: flex;
+  list-style: none;
+  background-color: rgba(60, 60, 67, 0.6);
+  border-radius: 8px;
+  height: 40px;
+  padding: 12px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  align-items: center;
+  justify-content: space-between;
+  color: #ffffff;
+`;

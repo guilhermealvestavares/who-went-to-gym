@@ -16,11 +16,17 @@ export const Routes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={!isLogged ? <Login /> : <Home />}></Route>
       <Route
-        path="/new"
+        path="/novo-ranking"
         element={!isLogged ? <Login /> : <NewRanking />}
       ></Route>
-      <Route path="/rankings/:id" element={<RankingInfos />} />
-      <Route path="registrar-treino" element={<NewRegister />} />
+      <Route
+        path="/rankings/:id"
+        element={!isLogged ? <Home /> : <RankingInfos />}
+      />
+      <Route
+        path="registrar-treino"
+        element={!isLogged ? <Home /> : <NewRegister />}
+      />
     </BrowserRoutes>
   );
 };

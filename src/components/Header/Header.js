@@ -6,6 +6,7 @@ import {
   LogoutButton,
   MenuWrapper,
   MenuItem,
+  StripMyWorkouts,
 } from "./Header.style";
 import Container from "react-bootstrap/Container";
 import { auth } from "../../firebaseUtils";
@@ -14,18 +15,15 @@ import { UserContext } from "../../contexts/UserContext";
 import GoogleButton from "react-google-button";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebaseUtils";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const { isLogged, setIsLogged, userInfos, setUserInfos } =
     useContext(UserContext);
 
-  const navigate = useNavigate();
-
   const purgeUserStorage = () => {
     localStorage.clear();
     setIsLogged(false);
-    console.log("purge");
   };
 
   const handlerGoogleLogin = async () => {
@@ -45,39 +43,49 @@ export const Header = () => {
             email,
             displayName,
             photoURL,
-            groups: [],
-            times: 0,
-            workoutInfos: [],
           },
           { merge: true }
         );
+        window.location.reload();
       })
       .catch((error) => console.log(error));
   };
 
   return (
-    <Wrapper>
+    <>
+      <Wrapper>
+        <Container>
+          <WrapperItem>
+            {isLogged ? (
+              <>
+                <MenuWrapper>
+                  <MenuItem>
+                    <Link to="/">Início</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="/novo-ranking">Novo Ranking</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="/registrar-treino">Registrar treino</Link>
+                  </MenuItem>
+                </MenuWrapper>
+                <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
+              </>
+            ) : (
+              <>
+                <ApplicationName>Gymgram</ApplicationName>
+                <GoogleButton
+                  onClick={handlerGoogleLogin}
+                  label="Entrar com o Google"
+                />
+              </>
+            )}
+          </WrapperItem>
+        </Container>
+      </Wrapper>
       <Container>
-        <WrapperItem>
-          {isLogged ? (
-            <>
-              <MenuWrapper>
-                <MenuItem>Início</MenuItem>
-                <MenuItem>Novo Ranking</MenuItem>
-              </MenuWrapper>
-              <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
-            </>
-          ) : (
-            <>
-              <ApplicationName>Gymgram</ApplicationName>
-              <GoogleButton
-                onClick={handlerGoogleLogin}
-                label="Entrar com o Google"
-              />
-            </>
-          )}
-        </WrapperItem>
+        <StripMyWorkouts>MVP Application</StripMyWorkouts>
       </Container>
-    </Wrapper>
+    </>
   );
 };
