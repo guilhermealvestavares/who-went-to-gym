@@ -1,6 +1,7 @@
 import { Routes as BrowserRoutes, Route } from "react-router-dom";
 import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
+import { NewRegister } from "./pages/NewRegister";
 import { NewRanking } from "./pages/NewRanking";
 import { RankingInfos } from "./components";
 import { useContext } from "react";
@@ -19,6 +20,7 @@ export const Routes = () => {
         element={!isLogged ? <Login /> : <NewRanking />}
       ></Route>
       <Route path="/rankings/:id" element={<RankingInfos />} />
+      <Route path="registrar-treino" element={<NewRegister />} />
     </BrowserRoutes>
   );
 };

@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-  border: 2px solid rgba(149, 165, 166, 0.5);
   width: 100%;
-  max-width: 800px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 24px;
-  margin: 24px 0;
+  border-radius: 20px;
+  padding: 16px 12px;
+  background-color: #342f3a;
+  margin: 16px 0;
   color: #ffffff;
+  text-align: center;
 `;
 
 export const WrapperFields = styled.div`
@@ -24,7 +22,7 @@ export const WrapperOptions = styled.div`
 `;
 
 export const Question = styled.label`
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
 `;
 

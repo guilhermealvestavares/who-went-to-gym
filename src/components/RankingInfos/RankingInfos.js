@@ -1,9 +1,19 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseUtils";
+import Container from "react-bootstrap/Container";
+import {
+  BoxInfos,
+  Title,
+  LabelInfos,
+  Infos,
+  Badge,
+  WrapperBadge,
+} from "./RankingInfos.style";
 
 export const RankingInfos = () => {
+  const [rankingInfos, setRankingInfos] = useState();
   const { id } = useParams();
 
   useEffect(() => {
@@ -13,6 +23,7 @@ export const RankingInfos = () => {
 
       if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
+        setRankingInfos(docSnap.data());
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");
@@ -22,8 +33,34 @@ export const RankingInfos = () => {
   }, [id]);
 
   return (
-    <>
-      <p>{id}</p>
-    </>
+    <Container>
+      {rankingInfos && <Title>{rankingInfos?.name}</Title>}
+      {rankingInfos && (
+        <BoxInfos>
+          <LabelInfos>
+            Criado por: <Infos>{rankingInfos?.creator?.name}</Infos>
+          </LabelInfos>
+
+          <LabelInfos>
+            Válido até: <Infos>{rankingInfos.finalDate}</Infos>
+          </LabelInfos>
+
+          <LabelInfos>
+            Quantidade de participantes:
+            <Infos>
+              {` ${rankingInfos?.participants?.length} participantes`}
+            </Infos>
+          </LabelInfos>
+          <LabelInfos>
+            Esportes válidos:
+            <WrapperBadge>
+              {rankingInfos?.sports.map((sport) => (
+                <Badge>{sport}</Badge>
+              ))}
+            </WrapperBadge>
+          </LabelInfos>
+        </BoxInfos>
+      )}
+    </Container>
   );
 };

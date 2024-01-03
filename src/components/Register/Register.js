@@ -1,82 +1,68 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseUtils";
 import { isSameDate } from "../../utils/isSameDate";
-import { Wrapper, Select, Button, Title } from "./Register.style";
+import { Wrapper, Select, Button } from "./Register.style";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export const Register = () => {
-  const [documentInfos, setDocumentInfos] = useState([]);
-  const [persons, setPersons] = useState([]);
-  const [selectPerson, setSelectPerson] = useState("");
-
-  const handleClickRegister = async () => {
-    if (
-      isSameDate(
-        new Date(
-          persons.find((element) => element.id === selectPerson)?.lastTime
-            .seconds * 1000
-        ),
-        new Date()
-      ) &&
-      selectPerson
-    ) {
-      alert(
-        `${
-          persons.find((element) => element.id === selectPerson).name
-        } já registrou um treino hoje`
-      );
-      window.location.reload();
-    } else if (selectPerson) {
-      await updateDoc(doc(db, "person", selectPerson), {
-        lastTime: new Date(),
-        times: persons.find((element) => element.id === selectPerson).times + 1,
-      });
-      alert(
-        `${
-          persons.find((element) => element.id === selectPerson).name
-        }, o seu treino foi registrado com sucesso.`
-      );
-      window.location.reload();
-    } else if (!selectPerson) {
-      alert("Selecione uma pessoa para realizar a marcação");
-    }
-  };
-
-  const handleSelectUser = (id) => {
-    setSelectPerson(id);
-  };
+  const [selectSport, setSelectSport] = useState("");
+  const [currentUserInfos, setCurrentUserInfos] = useState("");
+  const { userInfos } = useContext(UserContext);
+  const { email } = userInfos;
 
   useEffect(() => {
-    const getDocumentInfos = async () => {
-      const responsePersons = await getDocs(collection(db, "person"));
-      setDocumentInfos(responsePersons);
+    const getCurrentUserInfos = async () => {
+      const docRef = doc(db, "users", email);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        console.log("Document data:", docSnap.data());
+        setCurrentUserInfos(docSnap.data());
+      } else {
+        // docSnap.data() will be undefined in this case
+        console.log("No such document!");
+      }
     };
-    getDocumentInfos();
+    getCurrentUserInfos();
   }, []);
 
-  useEffect(() => {
-    documentInfos?.forEach((doc) => {
-      setPersons((persons) => [...persons, doc.data()]);
+  const handleClickRegister = async () => {
+    await updateDoc(doc(db, "users", email), {
+      lastTime: new Date(),
+      times: currentUserInfos.times + 1,
+      workoutInfos: [
+        ...currentUserInfos.workoutInfos,
+        {
+          sport: selectSport,
+          date: new Date(),
+          image: null,
+        },
+      ],
     });
-  }, [documentInfos]);
+  };
+
+  const handleSelectSport = (sport) => {
+    console.log(selectSport);
+    setSelectSport(sport);
+  };
 
   return (
     <>
-      <Title>Registre seu treino aqui</Title>
       <Wrapper>
-        {persons && (
-          <Select
-            name="persons"
-            onChange={(event) => handleSelectUser(event.target.value)}
-          >
-            <option value="">Selecione o participante</option>
-            {persons?.map(({ name, id }, index) => (
-              <option key={name + index} value={id}>
-                {name}
-              </option>
-            ))}
-          </Select>
-        )}
+        <Select
+          name="sport"
+          onChange={(event) => handleSelectSport(event.target.value)}
+        >
+          <option value="">Selecione o esporte</option>
+
+          <option value="Academia">Academia</option>
+          <option value="Cooper">Cooper</option>
+          <option value="Futebol">Futebol</option>
+          <option value="Vôlei">Vôlei</option>
+        </Select>
+
         <Button
           type="button"
           onClick={handleClickRegister}

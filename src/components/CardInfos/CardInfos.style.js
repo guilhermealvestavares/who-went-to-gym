@@ -19,6 +19,7 @@ export const Title = styled.p`
   font-size: 18px;
   font-weight: 600;
   margin: 0;
+  max-width: 150px;
 `;
 
 export const Description = styled.p`
@@ -42,7 +43,7 @@ export const Badge = styled.div`
   align-items: center;
   justify-content: center;
   max-height: 50px;
-  width: 120px;
+  width: 130px;
   font-weight: bold;
 `;
 

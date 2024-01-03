@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 
 export const NewRanking = () => {
   const navigate = useNavigate();
@@ -55,66 +56,72 @@ export const NewRanking = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <WrapperFields>
-        <Question>Nome da competição</Question>
-        <TextField
-          label="Nome da competição"
-          variant="standard"
-          {...register("name", { required: true })}
-        />
-        {errors.name && (
-          <Alert severity="error">
-            Você deve escolher um nome para a sua competição
-          </Alert>
-        )}
-      </WrapperFields>
-      <WrapperFields>
-        <Question>Esportes que valerão pontos para este ranking:</Question>
-        <WrapperOptions>
-          <Checkbox
-            type="checkbox"
-            {...register("sports", { required: true })}
-            value="academia"
+    <Container>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <WrapperFields>
+          <Question>Nome da competição</Question>
+          <TextField
+            label="Nome da competição"
+            variant="standard"
+            {...register("name", { required: true })}
           />
-          <Label for="academia">Academia</Label>
-        </WrapperOptions>
+          {errors.name && (
+            <Alert severity="error">
+              Você deve escolher um nome para a sua competição
+            </Alert>
+          )}
+        </WrapperFields>
+        <WrapperFields>
+          <Question>Esportes que valerão pontos para este ranking:</Question>
+          <WrapperOptions>
+            <Checkbox
+              type="checkbox"
+              {...register("sports", { required: true })}
+              value="academia"
+            />
+            <Label for="academia">Academia</Label>
+          </WrapperOptions>
 
-        <WrapperOptions>
-          <Checkbox type="checkbox" {...register("sports")} value="cooper" />
-          <Label for="cooper">Cooper</Label>
-        </WrapperOptions>
+          <WrapperOptions>
+            <Checkbox type="checkbox" {...register("sports")} value="Cooper" />
+            <Label for="cooper">Cooper</Label>
+          </WrapperOptions>
 
-        <WrapperOptions>
-          <Checkbox type="checkbox" {...register("sports")} value="futebol" />
-          <Label for="futebol">Futebol</Label>
-        </WrapperOptions>
-        <WrapperOptions>
-          <Checkbox type="checkbox" {...register("sports")} value="volei" />
-          <Label for="volei">Vôlei</Label>
-        </WrapperOptions>
-        <WrapperOptions>
-          <Checkbox type="checkbox" {...register("sports")} value="crossfit" />
-          <Label for="crossfit">Crossfit</Label>
-        </WrapperOptions>
-        {errors.sports && (
-          <Alert severity="error">
-            Você deve selecionar no mínimo uma opção
-          </Alert>
-        )}
-      </WrapperFields>
+          <WrapperOptions>
+            <Checkbox type="checkbox" {...register("sports")} value="Futebol" />
+            <Label for="futebol">Futebol</Label>
+          </WrapperOptions>
+          <WrapperOptions>
+            <Checkbox type="checkbox" {...register("sports")} value="Vôlei" />
+            <Label for="volei">Vôlei</Label>
+          </WrapperOptions>
+          <WrapperOptions>
+            <Checkbox
+              type="checkbox"
+              {...register("sports")}
+              value="Crossfit"
+            />
+            <Label for="crossfit">Crossfit</Label>
+          </WrapperOptions>
+          {errors.sports && (
+            <Alert severity="error">
+              Você deve selecionar no mínimo uma opção
+            </Alert>
+          )}
+        </WrapperFields>
 
-      <WrapperFields>
-        <Question>Até quando irá durar essa competição?</Question>
-        <input type="date" {...register("finalDate", { required: true })} />
-        {errors.finalDate && (
-          <Alert severity="error">Você deve selecionar uma data</Alert>
-        )}
-      </WrapperFields>
+        <WrapperFields>
+          <Question>Até quando irá durar essa competição?</Question>
+          <input type="date" {...register("finalDate", { required: true })} />
+          {errors.finalDate && (
+            <Alert severity="error">Você deve selecionar uma data</Alert>
+          )}
+        </WrapperFields>
 
-      <Button type="submit" variant="contained" color="success">
-        Criar ranking
-      </Button>
-    </Form>
+        <Button type="submit" variant="contained" color="success">
+          Criar ranking
+        </Button>
+      </Form>
+    </Container>
   );
 };

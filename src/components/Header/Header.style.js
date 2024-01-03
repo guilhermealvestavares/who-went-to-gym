@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 12px 0;
   border-bottom: 2px solid #ffffff;
+  margin-bottom: 32px;
 `;
 
 export const WrapperItem = styled.div`
@@ -32,6 +33,22 @@ export const LogoutButton = styled.button`
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
+`;
+
+export const MenuWrapper = styled.ul`
+  list-style: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+`;
+
+export const MenuItem = styled.li`
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0;
+  padding-right: 24px;
 `;
 
 export const ApplicationName = styled.p`

@@ -4,7 +4,8 @@ import {
   ApplicationName,
   WrapperItem,
   LogoutButton,
-  Avatar,
+  MenuWrapper,
+  MenuItem,
 } from "./Header.style";
 import Container from "react-bootstrap/Container";
 import { auth } from "../../firebaseUtils";
@@ -13,10 +14,13 @@ import { UserContext } from "../../contexts/UserContext";
 import GoogleButton from "react-google-button";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebaseUtils";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const { isLogged, setIsLogged, userInfos, setUserInfos } =
     useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const purgeUserStorage = () => {
     localStorage.clear();
@@ -57,7 +61,10 @@ export const Header = () => {
         <WrapperItem>
           {isLogged ? (
             <>
-              <Avatar alt="Foto do perfil" src={userInfos?.photoURL} />
+              <MenuWrapper>
+                <MenuItem>Início</MenuItem>
+                <MenuItem>Novo Ranking</MenuItem>
+              </MenuWrapper>
               <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
             </>
           ) : (
