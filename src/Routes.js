@@ -11,7 +11,7 @@ export const Routes = () => {
   const { isLogged } = useContext(UserContext);
 
   return (
-    <BrowserRoutes>
+    <BrowserRoutes basename="/who-went-to-gym">
       <Route path="old-ranking" element={<Home />} />
       <Route path="/" element={<Home />} />
       <Route path="/login" element={!isLogged ? <Login /> : <Home />}></Route>
