@@ -83,9 +83,6 @@ export const Header = () => {
           </WrapperItem>
         </Container>
       </Wrapper>
-      <Container>
-        <StripMyWorkouts>MVP Application</StripMyWorkouts>
-      </Container>
     </>
   );
 };
