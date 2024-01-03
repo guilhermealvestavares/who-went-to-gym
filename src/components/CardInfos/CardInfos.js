@@ -16,7 +16,7 @@ export const CardInfos = ({ infos, user }) => {
   const { email } = user;
 
   const goToPageRanking = () => {
-    navigate(`/rankings/${id}`);
+    navigate(`/who-went-to-gym/rankings/${id}`);
   };
 
   const findParticipantInGroup = (user) => {
