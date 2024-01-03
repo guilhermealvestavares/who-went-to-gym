@@ -3,13 +3,11 @@
 
 <head>
   <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', () => {
-      var location = window.location.pathname;
-      var correctedPath = location.replace('/who-went-to-gym', '');
-      window.history.replaceState(null, null, correctedPath);
-    });
-  </script>
-  <meta charset="utf-8" />
+    // Se estamos no caminho 404, redirecionamos para o index.html
+    if (window.location.pathname === '/who-went-to-gym/404.html') {
+      window.location.replace('/who-went-to-gym/');
+    }
+  </script>set="utf-8" />
   <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
