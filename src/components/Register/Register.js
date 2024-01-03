@@ -44,7 +44,7 @@ export const Register = () => {
         },
       ],
     });
-    window.location.reload();
+    window.location.reload(true);
     console.log(currentUserInfos);
   };
 

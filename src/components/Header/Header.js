@@ -46,7 +46,7 @@ export const Header = () => {
           },
           { merge: true }
         );
-        window.location.reload();
+        window.location.reload(true);
       })
       .catch((error) => console.log(error));
   };
@@ -60,7 +60,7 @@ export const Header = () => {
               <>
                 <MenuWrapper>
                   <MenuItem>
-                    <Link to="/">Início</Link>
+                    <Link to="/who-went-to-gym">Início</Link>
                   </MenuItem>
                   <MenuItem>
                     <Link to="/novo-ranking">Novo Ranking</Link>
