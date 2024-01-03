@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 12px 0;
   border-bottom: 2px solid #ffffff;
+  margin-bottom: 24px;
 `;
 
 export const WrapperItem = styled.div`
