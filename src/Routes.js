@@ -17,15 +17,15 @@ export const Routes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={!isLogged ? <Home /> : <Home />}></Route>
       <Route
-        path="/novo-ranking"
+        path="/who-went-to-gym/novo-ranking"
         element={!isLogged ? <Home /> : <NewRanking />}
       ></Route>
       <Route
-        path="/rankings/:id"
+        path="/who-went-to-gym/rankings/:id"
         element={!isLogged ? <Home /> : <RankingInfos />}
       />
       <Route
-        path="registrar-treino"
+        path="/who-went-to-gym/registrar-treino"
         element={!isLogged ? <Home /> : <NewRegister />}
       />
     </BrowserRoutes>
