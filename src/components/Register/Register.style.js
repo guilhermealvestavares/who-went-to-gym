@@ -48,3 +48,8 @@ export const Button = styled.input`
   text-transform: uppercase;
   font-weight: bold;
 `;
+
+export const WorkoutTimesInfo = styled.p`
+  color: #ffffff;
+  font-weight: bold;
+`;

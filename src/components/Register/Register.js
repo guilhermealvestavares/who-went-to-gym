@@ -8,6 +8,7 @@ import {
   Title,
   Description,
   SucessImage,
+  WorkoutTimesInfo,
 } from "./Register.style";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
@@ -16,7 +17,7 @@ export const Register = () => {
   const [selectSport, setSelectSport] = useState("");
   const [currentUserInfos, setCurrentUserInfos] = useState("");
   const { userInfos } = useContext(UserContext);
-  const { email } = userInfos;
+  const { email, photoURL } = userInfos;
 
   useEffect(() => {
     const getCurrentUserInfos = async () => {
@@ -33,7 +34,9 @@ export const Register = () => {
   const handleClickRegister = async () => {
     await updateDoc(doc(db, "users", email), {
       lastTime: new Date().toLocaleDateString(),
-      times: currentUserInfos ? currentUserInfos.workoutInfos.length + 1 : 1,
+      times: currentUserInfos?.workoutInfos?.length
+        ? currentUserInfos?.workoutInfos?.length + 1
+        : 1,
       workoutInfos: [
         ...(currentUserInfos?.workoutInfos || []),
         {
@@ -60,10 +63,21 @@ export const Register = () => {
           <Description>
             Agora seus amigos podem ver suas atividades no ranking do seu grupo.
           </Description>
+          {currentUserInfos?.times && (
+            <WorkoutTimesInfo>
+              {currentUserInfos?.times}º treino registrado em 2024 💪🏻
+            </WorkoutTimesInfo>
+          )}
         </Wrapper>
       )}
       {currentUserInfos.lastTime !== new Date().toLocaleDateString() && (
         <Wrapper>
+          <SucessImage src={photoURL} alt="Foto do usuário" />
+          {currentUserInfos?.times && (
+            <WorkoutTimesInfo>
+              {currentUserInfos?.times} Treinos 💪🏻
+            </WorkoutTimesInfo>
+          )}
           <Select
             name="sport"
             onChange={(event) => handleSelectSport(event.target.value)}
