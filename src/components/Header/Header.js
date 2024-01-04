@@ -58,15 +58,13 @@ export const Header = () => {
               <>
                 <MenuWrapper>
                   <MenuItem>
-                    <Link to="/who-went-to-gym">Início</Link>
+                    <Link to="/">Início</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to="/who-went-to-gym/novo-ranking">Novo Ranking</Link>
+                    <Link to="/novo-ranking">Novo Ranking</Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to="/who-went-to-gym/registrar-treino">
-                      Registrar treino
-                    </Link>
+                    <Link to="/registrar-treino">Registrar treino</Link>
                   </MenuItem>
                 </MenuWrapper>
                 <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>

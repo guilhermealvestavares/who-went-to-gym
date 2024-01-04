@@ -11,20 +11,17 @@ export const Routes = () => {
 
   return (
     <BrowserRoutes basename="/who-went-to-gym">
-      <Route path="old-ranking" element={<Home />} />
-      <Route path="/who-went-to-gym" element={<Home />} />
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={!isLogged ? <Home /> : <Home />}></Route>
       <Route
-        path="/who-went-to-gym/novo-ranking"
+        path="/novo-ranking"
         element={!isLogged ? <Home /> : <NewRanking />}
       ></Route>
       <Route
-        path="/who-went-to-gym/rankings/:id"
+        path="/rankings/:id"
         element={!isLogged ? <Home /> : <RankingInfos />}
       />
       <Route
-        path="/who-went-to-gym/registrar-treino"
+        path="/registrar-treino"
         element={!isLogged ? <Home /> : <NewRegister />}
       />
     </BrowserRoutes>
