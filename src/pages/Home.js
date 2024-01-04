@@ -1,4 +1,4 @@
-import { CardInfos } from "../components";
+import { CardInfos, Loader } from "../components";
 import {
   Wrapper,
   Title,
@@ -46,7 +46,7 @@ export const Home = () => {
         setIsLogged(true);
         setUserInfos(JSON.stringify(result?.user));
 
-        const { email, displayName, photoURL } = userInfos;
+        const { email, displayName, photoURL } = result?.user;
 
         await setDoc(
           doc(db, "users", userInfos.email),
@@ -72,6 +72,7 @@ export const Home = () => {
               Clique em entrar para participar de rankings
             </Description>
           </div>
+          {!rankingInfo && <Loader />}
           <WrapperCards>
             {rankingInfo &&
               rankingInfo.map((infos) => (

@@ -17,8 +17,7 @@ import { db } from "../../firebaseUtils";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-  const { isLogged, setIsLogged, userInfos, setUserInfos } =
-    useContext(UserContext);
+  const { isLogged, setIsLogged, setUserInfos } = useContext(UserContext);
 
   const purgeUserStorage = () => {
     localStorage.clear();
@@ -34,10 +33,10 @@ export const Header = () => {
         setIsLogged(true);
         setUserInfos(JSON.stringify(result?.user));
 
-        const { email, displayName, photoURL } = userInfos;
-
+        const { email, displayName, photoURL } = result?.user;
+        console.log("result.user", result?.user);
         await setDoc(
-          doc(db, "users", userInfos.email),
+          doc(db, "users", result?.user.email),
           {
             email,
             displayName,

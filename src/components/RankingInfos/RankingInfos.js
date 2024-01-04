@@ -14,6 +14,7 @@ import {
   ListItem,
   BadgePosition,
 } from "./RankingInfos.style";
+import { Loader } from "../Loader";
 
 export const RankingInfos = () => {
   const [rankingInfos, setRankingInfos] = useState();
@@ -91,6 +92,7 @@ export const RankingInfos = () => {
       )}
       <List>
         {console.log(userWorkoutsInfos)}
+        {!rankingInfos && <Loader />}
         {userWorkoutsInfos &&
           userWorkoutsInfos
             ?.sort((prev, next) => next?.times - prev?.times)
