@@ -57,7 +57,6 @@ export const Home = () => {
         },
         { merge: true }
       );
-      window.location.reload();
     } catch (error) {
       console.log(error);
     }

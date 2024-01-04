@@ -44,7 +44,6 @@ export const Header = () => {
         },
         { merge: true }
       );
-      window.location.reload();
     } catch (error) {
       console.log(error);
     }
