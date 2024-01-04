@@ -12,6 +12,7 @@ import {
   WrapperBadge,
   List,
   ListItem,
+  BadgePosition,
 } from "./RankingInfos.style";
 
 export const RankingInfos = () => {
@@ -92,12 +93,16 @@ export const RankingInfos = () => {
         {console.log(userWorkoutsInfos)}
         {userWorkoutsInfos &&
           userWorkoutsInfos
-            ?.sort((prev, next) => next.times - prev.times)
+            ?.sort((prev, next) => next?.times - prev?.times)
             .map((item, index) => (
-              <ListItem key={`${index}index`}>
+              <ListItem key={`${index}-list-items`}>
+                <BadgePosition>{index + 1}</BadgePosition>
                 <span>{item.displayName}</span>
 
-                <span>{item.times} treinos</span>
+                <span>
+                  {item.times ? item.times : 0}{" "}
+                  {item.times === 1 ? "treino" : "treinos"}
+                </span>
               </ListItem>
             ))}
       </List>

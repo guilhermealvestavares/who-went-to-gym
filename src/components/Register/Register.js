@@ -75,7 +75,8 @@ export const Register = () => {
           <SucessImage src={photoURL} alt="Foto do usuário" />
           {currentUserInfos?.times && (
             <WorkoutTimesInfo>
-              {currentUserInfos?.times} Treinos 💪🏻
+              {currentUserInfos?.times}{" "}
+              {currentUserInfos.times === 1 ? "treino" : "treinos"} 💪🏻
             </WorkoutTimesInfo>
           )}
           <Select

@@ -74,3 +74,12 @@ export const ListItem = styled.li`
   justify-content: space-between;
   color: #ffffff;
 `;
+
+export const BadgePosition = styled.div`
+  border-radius: 50%;
+  border: 1px solid #aeaeae;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
