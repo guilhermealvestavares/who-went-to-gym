@@ -26,27 +26,28 @@ export const Header = () => {
 
   const handlerGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then(async (result) => {
-        localStorage.setItem("userInfos", JSON.stringify(result?.user));
-        localStorage.setItem("isLogged", true);
-        setIsLogged(true);
-        setUserInfos(JSON.stringify(result?.user));
+    try {
+      const result = await signInWithPopup(auth, provider);
+      localStorage.setItem("userInfos", JSON.stringify(result?.user));
+      localStorage.setItem("isLogged", true);
+      setIsLogged(true);
+      setUserInfos(JSON.stringify(result?.user));
 
-        const { email, displayName, photoURL } = result?.user;
-        console.log("result.user", result?.user);
-        await setDoc(
-          doc(db, "users", result?.user.email),
-          {
-            email,
-            displayName,
-            photoURL,
-          },
-          { merge: true }
-        );
-        window.location.reload(true);
-      })
-      .catch((error) => console.log(error));
+      const { email, displayName, photoURL } = result?.user;
+
+      await setDoc(
+        doc(db, "users", email),
+        {
+          email,
+          displayName,
+          photoURL,
+        },
+        { merge: true }
+      );
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
