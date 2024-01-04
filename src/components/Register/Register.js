@@ -1,9 +1,9 @@
+import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseUtils";
 import {
   Wrapper,
-  Select,
   Button,
   Title,
   Description,
@@ -12,12 +12,19 @@ import {
 } from "./Register.style";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import Form from "react-bootstrap/Form";
+import Alert from "@mui/material/Alert";
 
 export const Register = () => {
   const [selectSport, setSelectSport] = useState("");
   const [currentUserInfos, setCurrentUserInfos] = useState("");
   const { userInfos } = useContext(UserContext);
   const { email, photoURL } = userInfos;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     const getCurrentUserInfos = async () => {
@@ -79,23 +86,27 @@ export const Register = () => {
               {currentUserInfos.times === 1 ? "treino" : "treinos"} 💪🏻
             </WorkoutTimesInfo>
           )}
-          <Select
-            name="sport"
-            onChange={(event) => handleSelectSport(event.target.value)}
-          >
-            <option value="">Selecione o esporte</option>
+          <form onSubmit={handleSubmit(handleClickRegister)}>
+            <Form.Select
+              name="sport"
+              {...register("sport", { required: true })}
+              onChange={(event) => handleSelectSport(event.target.value)}
+              aria-label="Default select example"
+            >
+              <option value="">Selecione o esporte</option>
 
-            <option value="Academia">Academia</option>
-            <option value="Cooper">Cooper</option>
-            <option value="Futebol">Futebol</option>
-            <option value="Vôlei">Vôlei</option>
-          </Select>
+              <option value="Academia">Academia</option>
+              <option value="Cooper">Cooper</option>
+              <option value="Futebol">Futebol</option>
+              <option value="Vôlei">Vôlei</option>
+              <option value="Crossfit">Crossfit</option>
+            </Form.Select>
+            {errors.sport && (
+              <Alert severity="error">Você deve selecionar uma esporte</Alert>
+            )}
 
-          <Button
-            type="button"
-            onClick={handleClickRegister}
-            value="Registrar treino"
-          />
+            <Button type="submit" value="Registrar treino" />
+          </form>
         </Wrapper>
       )}
     </>

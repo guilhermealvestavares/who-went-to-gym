@@ -47,6 +47,8 @@ export const Button = styled.input`
   width: 100%;
   text-transform: uppercase;
   font-weight: bold;
+  margin-top: 8px;
+  height: 55px;
 `;
 
 export const WorkoutTimesInfo = styled.p`
