@@ -13,6 +13,7 @@ import {
   List,
   ListItem,
   BadgePosition,
+  WorkoutTimes,
 } from "./RankingInfos.style";
 import { Loader } from "../Loader";
 
@@ -101,10 +102,14 @@ export const RankingInfos = () => {
                 <BadgePosition>{index + 1}</BadgePosition>
                 <span>{item.displayName}</span>
 
-                <span>
+                <WorkoutTimes
+                  workoutToday={
+                    item?.lastTime === new Date().toLocaleDateString()
+                  }
+                >
                   {item.times ? item.times : 0}{" "}
                   {item.times === 1 ? "treino" : "treinos"}
-                </span>
+                </WorkoutTimes>
               </ListItem>
             ))}
       </List>

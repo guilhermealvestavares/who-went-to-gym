@@ -83,3 +83,7 @@ export const BadgePosition = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const WorkoutTimes = styled.span`
+  color: ${(props) => (props?.workoutToday ? "green" : "#ffffff")};
+`;
