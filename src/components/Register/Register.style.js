@@ -47,11 +47,52 @@ export const Button = styled.input`
   width: 100%;
   text-transform: uppercase;
   font-weight: bold;
+  margin-top: 24px;
+  height: 55px;
+`;
+
+export const ButtonRedirect = styled.button`
+  border-radius: 20px;
+  background-color: #ffffff;
+  padding: 0px 12px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  border: 0;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 24px;
+  height: 55px;
+`;
+
+export const ButtonAddPhoto = styled.label`
+  border-radius: 20px;
+  border: 1px solid #ffffff;
+  padding: 0px 12px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  border: 0;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
   margin-top: 8px;
   height: 55px;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+`;
+
+export const ButtonDefaultFile = styled.input`
+  display: none;
 `;
 
 export const WorkoutTimesInfo = styled.p`
   color: #ffffff;
   font-weight: bold;
+  margin-top: 14px;
 `;

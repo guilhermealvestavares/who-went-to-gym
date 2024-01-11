@@ -94,6 +94,10 @@ export const RankingInfos = () => {
       <List>
         {console.log(userWorkoutsInfos)}
         {!rankingInfos && <Loader />}
+        {console.log(userWorkoutsInfos)}
+        {console.log(
+          userWorkoutsInfos?.sort((prev, next) => next?.times - prev?.times)
+        )}
         {userWorkoutsInfos &&
           userWorkoutsInfos
             ?.sort((prev, next) => next?.times - prev?.times)
