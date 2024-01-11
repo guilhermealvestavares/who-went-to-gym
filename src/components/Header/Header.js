@@ -116,10 +116,13 @@ export const Header = () => {
                 )}
               </>
             ) : (
-              <GoogleButton
-                onClick={handlerGoogleLogin}
-                label="Entrar com o Google"
-              />
+              <>
+                <ApplicationName>Gymgram</ApplicationName>
+                <GoogleButton
+                  onClick={handlerGoogleLogin}
+                  label="Entrar com o Google"
+                />
+              </>
             )}
           </WrapperItem>
         </Container>
