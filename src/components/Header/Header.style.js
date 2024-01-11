@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import Offcanvas from "react-bootstrap/Offcanvas";
+
+export const OffCanvasStyled = styled(Offcanvas)`
+  background-color: #000000;
+`;
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -60,13 +65,11 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const ApplicationName = styled.p`
-  font-weight: bold;
-  margin: 0;
-`;
-
 export const Avatar = styled.img`
   border-radius: 50%;
+  display: block;
+  height: ${(props) => (props?.mobile ? "120px" : "50px")};
+  margin: ${(props) => (props?.mobile ? "0 auto" : "0")};
 `;
 
 export const StripMyWorkouts = styled.div`
@@ -77,4 +80,25 @@ export const StripMyWorkouts = styled.div`
   display: flex;
   justify-content: center;
   background-color: #16a085;
+`;
+
+export const MenuItemMobile = styled.li`
+  color: #000000;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0;
+  padding: 16px 0;
+  text-decoration: none;
+  list-style: none;
+
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
+`;
+
+export const ApplicationName = styled.p`
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
 `;

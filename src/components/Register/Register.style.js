@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Form from "react-bootstrap/Form";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -26,12 +27,9 @@ export const SucessImage = styled.img`
   width: 120px;
 `;
 
-export const Select = styled.select`
-  width: 100%;
-  border-radius: 20px;
-  height: 40px;
-  margin-bottom: 6px;
-  text-align: center;
+export const Select = styled(Form.Select)`
+  background-color: "#2c2831" !important;
+  color: "#ffffff" !important;
 `;
 
 export const Button = styled.input`

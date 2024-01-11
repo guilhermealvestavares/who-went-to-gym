@@ -133,6 +133,7 @@ export const Register = () => {
           <form onSubmit={handleSubmit(handleClickRegister)}>
             <Form.Group controlId="formGroupSport">
               <Form.Select
+                style={{ backgroundColor: "#2c2831", color: "#ffffff" }}
                 name="sport"
                 {...register("sport", { required: true })}
                 onChange={(event) => handleSelectSport(event.target.value)}
@@ -159,6 +160,7 @@ export const Register = () => {
                   <ButtonDefaultFile
                     id="file-upload"
                     type="file"
+                    accept=".webp, .png, .jpg, .jpeg"
                     {...register("uploadImage", { required: true })}
                     onChange={handleUploadImage}
                   />

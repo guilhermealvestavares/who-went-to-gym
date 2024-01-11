@@ -13,8 +13,8 @@ import { differenceInDays } from "date-fns";
 import { formatDate } from "../../utils";
 
 export const CardInfos = ({ infos, user }) => {
-  const navigate = useNavigate();
   const { name, participants, sports, finalDate, id } = infos;
+  const navigate = useNavigate();
   const { email } = user;
 
   const goToPageRanking = () => {

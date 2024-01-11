@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   Wrapper,
   ApplicationName,
@@ -6,8 +6,12 @@ import {
   LogoutButton,
   MenuWrapper,
   MenuItem,
+  Avatar,
+  MenuItemMobile,
+  OffCanvasStyled,
 } from "./Header.style";
 import Container from "react-bootstrap/Container";
+import Offcanvas from "react-bootstrap/Offcanvas";
 import { auth } from "../../firebaseUtils";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { UserContext } from "../../contexts/UserContext";
@@ -17,7 +21,30 @@ import { db } from "../../firebaseUtils";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-  const { isLogged, setIsLogged, setUserInfos } = useContext(UserContext);
+  const { isLogged, setIsLogged, setUserInfos, userInfos } =
+    useContext(UserContext);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+
+      // Adiciona um event listener para mudanças no tamanho da janela
+      window.addEventListener("resize", handleResize);
+
+      // Remove o event listener ao desmontar
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return isMobile;
+  };
 
   const purgeUserStorage = () => {
     localStorage.clear();
@@ -51,6 +78,8 @@ export const Header = () => {
     }
   };
 
+  const isMobile = useIsMobile();
+
   return (
     <>
       <Wrapper>
@@ -58,31 +87,65 @@ export const Header = () => {
           <WrapperItem>
             {isLogged ? (
               <>
-                <MenuWrapper>
-                  <MenuItem>
-                    <Link to="/">Início</Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to="/novo-ranking">Novo Ranking</Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to="/registrar-treino">Registrar treino</Link>
-                  </MenuItem>
-                </MenuWrapper>
-                <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
+                {!isMobile && (
+                  <MenuWrapper>
+                    <MenuItem>
+                      <Link to="/">Início</Link>
+                    </MenuItem>
+                    <MenuItem>
+                      <Link to="/novo-ranking">Novo Ranking</Link>
+                    </MenuItem>
+                    <MenuItem>
+                      <Link to="/registrar-treino">Registrar treino</Link>
+                    </MenuItem>
+                  </MenuWrapper>
+                )}
+
+                {isMobile && (
+                  <>
+                    <span />
+                    <ApplicationName>Gymgram</ApplicationName>
+                    <Avatar
+                      onClick={handleShow}
+                      src="https://icon-library.com/images/white-hamburger-menu-icon/white-hamburger-menu-icon-24.jpg"
+                    />
+                  </>
+                )}
+                {!isMobile && (
+                  <Avatar onClick={handleShow} src={userInfos.photoURL} />
+                )}
               </>
             ) : (
-              <>
-                <ApplicationName>Gymgram</ApplicationName>
-                <GoogleButton
-                  onClick={handlerGoogleLogin}
-                  label="Entrar com o Google"
-                />
-              </>
+              <GoogleButton
+                onClick={handlerGoogleLogin}
+                label="Entrar com o Google"
+              />
             )}
           </WrapperItem>
         </Container>
       </Wrapper>
+      <>
+        <OffCanvasStyled show={show} placement={"end"} onHide={handleClose}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Gymgram</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            {isMobile && (
+              <Avatar onClick={handleShow} src={userInfos.photoURL} mobile />
+            )}
+            <MenuItemMobile>
+              <Link to="/">Início</Link>
+            </MenuItemMobile>
+            <MenuItemMobile>
+              <Link to="/novo-ranking">Novo Ranking</Link>
+            </MenuItemMobile>
+            <MenuItemMobile>
+              <Link to="/registrar-treino">Registrar treino</Link>
+            </MenuItemMobile>
+            <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
+          </Offcanvas.Body>
+        </OffCanvasStyled>
+      </>
     </>
   );
 };
