@@ -127,28 +127,31 @@ export const Header = () => {
           </WrapperItem>
         </Container>
       </Wrapper>
-      <>
-        <OffCanvasStyled show={show} placement={"end"} onHide={handleClose}>
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Gymgram</Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            {isMobile && (
-              <Avatar onClick={handleShow} src={userInfos.photoURL} mobile />
-            )}
-            <MenuItemMobile>
-              <Link to="/">Início</Link>
-            </MenuItemMobile>
-            <MenuItemMobile>
-              <Link to="/novo-ranking">Novo Ranking</Link>
-            </MenuItemMobile>
-            <MenuItemMobile>
-              <Link to="/registrar-treino">Registrar treino</Link>
-            </MenuItemMobile>
-            <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
-          </Offcanvas.Body>
-        </OffCanvasStyled>
-      </>
+
+      {isLogged && (
+        <>
+          <OffCanvasStyled show={show} placement={"end"} onHide={handleClose}>
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title>Gymgram</Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              {isMobile && (
+                <Avatar onClick={handleShow} src={userInfos.photoURL} mobile />
+              )}
+              <MenuItemMobile>
+                <Link to="/">Início</Link>
+              </MenuItemMobile>
+              <MenuItemMobile>
+                <Link to="/novo-ranking">Novo Ranking</Link>
+              </MenuItemMobile>
+              <MenuItemMobile>
+                <Link to="/registrar-treino">Registrar treino</Link>
+              </MenuItemMobile>
+              <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
+            </Offcanvas.Body>
+          </OffCanvasStyled>
+        </>
+      )}
     </>
   );
 };
