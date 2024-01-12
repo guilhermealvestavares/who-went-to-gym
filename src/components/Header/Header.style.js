@@ -70,6 +70,7 @@ export const Avatar = styled.img`
   display: block;
   height: ${(props) => (props?.mobile ? "120px" : "50px")};
   margin: ${(props) => (props?.mobile ? "0 auto" : "0")};
+  margin: 1px;
 `;
 
 export const StripMyWorkouts = styled.div`
