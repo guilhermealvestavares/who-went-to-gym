@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Gymgram
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicação para criar rankings a fim de competir com os amigos e motivar-se a praticar atividades físicas
 
-## Available Scripts
+## Iniciando
 
-In the project directory, you can run:
+Estas instruções fornecerão uma cópia do projeto em execução na sua máquina local para fins de desenvolvimento e teste.
 
-### `npm start`
+### Pré-requisitos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Antes de iniciar, você precisa ter o Node.js e o NPM instalados em sua máquina. Para verificar se você já tem eles instalados, execute os seguintes comandos no seu terminal:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```javascript
+node -v
+npm -v
+```
 
-### `npm test`
+Se os comandos acima retornarem versões, você está pronto para prosseguir. Caso contrário, instale o Node.js e o NPM [aqui](https://nodejs.org/en/download/).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Instalação
 
-### `npm run build`
+Para instalar as dependências do projeto, navegue até a pasta raiz do projeto no seu terminal e execute:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Este comando baixará todas as dependências necessárias para rodar a aplicação.
 
-### `npm run eject`
+### Executando o Projeto Localmente
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Para rodar o projeto localmente, execute:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```javascript
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Este comando iniciará a aplicação React em modo de desenvolvimento. Abra http://localhost:3000 para visualizá-la no navegador.
 
-## Learn More
+A página será recarregada se você fizer edições. Você também verá quaisquer erros no console.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Deploy no GitHub Pages
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para fazer deploy da aplicação no GitHub Pages, execute:
+```javascript
+npm run deploy
+```
 
-### Code Splitting
+### Funcionalidades
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Lorem Ipsum
 
-### Analyzing the Bundle Size
+### Libs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Lorem Ipsum
 
-### Making a Progressive Web App
+Este comando construirá a aplicação e a publicará na branch gh-pages do seu repositório. Após o deploy, a aplicação estará disponível em https://guilhermealvestavares.github.io/who-went-to-gym/.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Sobre a Aplicação
 
-### Advanced Configuration
+Esta aplicação foi criada utilizando Create React App e utiliza Styled Components para estilização. O React é uma biblioteca JavaScript para construção de interfaces de usuário, enquanto o Styled Components permite escrever CSS em JavaScript, facilitando a estilização dos componentes React.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Licença
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE.md para detalhes.
