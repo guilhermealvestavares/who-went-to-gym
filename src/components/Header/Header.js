@@ -89,13 +89,13 @@ export const Header = () => {
               <>
                 {!isMobile && (
                   <MenuWrapper>
-                    <MenuItem>
+                    <MenuItem onClick={handleClose}>
                       <Link to="/">Início</Link>
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem onClick={handleClose}>
                       <Link to="/novo-ranking">Novo Ranking</Link>
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem onClick={handleClose}>
                       <Link to="/registrar-treino">Registrar treino</Link>
                     </MenuItem>
                   </MenuWrapper>
@@ -138,13 +138,13 @@ export const Header = () => {
               {isMobile && (
                 <Avatar onClick={handleShow} src={userInfos?.photoURL} mobile />
               )}
-              <MenuItemMobile>
+              <MenuItemMobile onClick={handleClose}>
                 <Link to="/">Início</Link>
               </MenuItemMobile>
-              <MenuItemMobile>
+              <MenuItemMobile onClick={handleClose}>
                 <Link to="/novo-ranking">Novo Ranking</Link>
               </MenuItemMobile>
-              <MenuItemMobile>
+              <MenuItemMobile onClick={handleClose}>
                 <Link to="/registrar-treino">Registrar treino</Link>
               </MenuItemMobile>
               <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
