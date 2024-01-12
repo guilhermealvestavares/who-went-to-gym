@@ -47,6 +47,7 @@ Para fazer deploy da aplicação no GitHub Pages, execute:
 ```javascript
 npm run deploy
 ```
+Este comando construirá a aplicação e a publicará na branch gh-pages do seu repositório. Após o deploy, a aplicação estará disponível em https://guilhermealvestavares.github.io/who-went-to-gym/.
 
 ### Funcionalidades
 
@@ -56,7 +57,6 @@ Lorem Ipsum
 
 Lorem Ipsum
 
-Este comando construirá a aplicação e a publicará na branch gh-pages do seu repositório. Após o deploy, a aplicação estará disponível em https://guilhermealvestavares.github.io/who-went-to-gym/.
 
 ## Sobre a Aplicação
 
