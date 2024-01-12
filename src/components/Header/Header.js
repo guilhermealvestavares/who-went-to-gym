@@ -112,7 +112,7 @@ export const Header = () => {
                   </>
                 )}
                 {!isMobile && (
-                  <Avatar onClick={handleShow} src={userInfos.photoURL} />
+                  <Avatar onClick={handleShow} src={userInfos?.photoURL} />
                 )}
               </>
             ) : (
@@ -136,7 +136,7 @@ export const Header = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               {isMobile && (
-                <Avatar onClick={handleShow} src={userInfos.photoURL} mobile />
+                <Avatar onClick={handleShow} src={userInfos?.photoURL} mobile />
               )}
               <MenuItemMobile>
                 <Link to="/">Início</Link>
