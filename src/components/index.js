@@ -7,3 +7,5 @@ export * from "./NewRanking";
 export * from "./RankingInfos";
 export * from "./CardInfos";
 export * from "./Loader";
+export * from "./ProfileInfos";
+export * from "./Calendar";

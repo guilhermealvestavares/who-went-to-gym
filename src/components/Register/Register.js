@@ -177,7 +177,7 @@ export const Register = () => {
               )}
             </Form.Group>
 
-            <Button type="submit" value="Registrar treino" disabled />
+            <Button type="submit" value="Registrar treino" />
           </form>
         </Wrapper>
       )}
