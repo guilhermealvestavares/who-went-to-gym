@@ -98,6 +98,9 @@ export const Header = () => {
                     <MenuItem onClick={handleClose}>
                       <Link to="/registrar-treino">Registrar treino</Link>
                     </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <Link to="/meu-perfil">Meu Perfil</Link>
+                    </MenuItem>
                   </MenuWrapper>
                 )}
 
@@ -146,6 +149,9 @@ export const Header = () => {
               </MenuItemMobile>
               <MenuItemMobile onClick={handleClose}>
                 <Link to="/registrar-treino">Registrar treino</Link>
+              </MenuItemMobile>
+              <MenuItemMobile onClick={handleClose}>
+                <Link to="/registrar-treino">Meu Perfil</Link>
               </MenuItemMobile>
               <LogoutButton onClick={purgeUserStorage}>Logout</LogoutButton>
             </Offcanvas.Body>
