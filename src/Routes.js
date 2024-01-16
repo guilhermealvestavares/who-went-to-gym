@@ -2,6 +2,7 @@ import { Routes as BrowserRoutes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { NewRegister } from "./pages/NewRegister";
 import { NewRanking } from "./pages/NewRanking";
+import { MyProfile } from "./pages/MyProfile";
 import { RankingInfos } from "./components";
 import { useContext } from "react";
 import { UserContext } from "./contexts/UserContext";
@@ -23,6 +24,10 @@ export const Routes = () => {
       <Route
         path="/registrar-treino"
         element={!isLogged ? <Home /> : <NewRegister />}
+      />
+      <Route
+        path="/meu-perfil"
+        element={!isLogged ? <Home /> : <MyProfile />}
       />
     </BrowserRoutes>
   );

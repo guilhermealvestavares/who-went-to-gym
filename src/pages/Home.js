@@ -73,7 +73,7 @@ export const Home = () => {
               Clique em entrar para participar de rankings
             </Description>
           </div>
-          {!rankingInfo && <Loader />}
+          {!rankingInfos && <Loader />}
           <WrapperCards>
             {rankingInfo &&
               rankingInfo.map((infos) => (
