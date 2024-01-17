@@ -20,10 +20,12 @@ import Form from "react-bootstrap/Form";
 import Alert from "@mui/material/Alert";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "../Loader";
 
 export const Register = () => {
   const navigate = useNavigate();
   const [registerPhoto, setRegisterPhoto] = useState("");
+  const [registerPhotoClicked, setRegisterPhotoClicked] = useState(false);
   const [selectSport, setSelectSport] = useState("");
   const [currentUserInfos, setCurrentUserInfos] = useState("");
   const { userInfos } = useContext(UserContext);
@@ -54,11 +56,13 @@ export const Register = () => {
   };
 
   const handleUploadImage = async (event) => {
+    setRegisterPhotoClicked(true);
     const file = event.target.files[0];
     if (file) {
       try {
         const url = await uploadImage(file);
         setRegisterPhoto(url);
+        setRegisterPhotoClicked(false);
       } catch (error) {
         console.error("Erro durante o upload da imagem:", error);
       }
@@ -152,7 +156,8 @@ export const Register = () => {
             </Form.Group>
 
             <Form.Group controlId="formGroupPhoto">
-              {!registerPhoto && (
+              {registerPhotoClicked && <Loader />}
+              {!registerPhoto && !registerPhotoClicked && (
                 <>
                   <ButtonAddPhoto for="file-upload">
                     Adicionar foto
@@ -177,7 +182,11 @@ export const Register = () => {
               )}
             </Form.Group>
 
-            <Button type="submit" value="Registrar treino" />
+            <Button
+              type="submit"
+              value="Registrar treino"
+              disabled={registerPhotoClicked}
+            />
           </form>
         </Wrapper>
       )}
